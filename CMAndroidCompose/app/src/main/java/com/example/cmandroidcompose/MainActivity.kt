@@ -62,7 +62,7 @@ fun GameArea() {
         Text(text = "Number Guessing Game",
             fontSize = 24.sp,
             fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Left,
         )
         Text(text = "Try to guess the number I'm thinking of from 1 - 50!",
             fontSize = 24.sp,
