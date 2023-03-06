@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Number Guessing Game</string>
-    <string name="text_input_label1">Number</string>
+    <string name="text_input_label1">Your Guess</string>
     <string name="button_label1">Guess</string>
-    <string name="try_again_button">Try again</string>
+    <string name="try_again_button">PLAY AGAIN</string>
     <string name="correct">You guess it right!</string>
     <string name="less">Less than that.</string>
     <string name="more">More than that.</string>

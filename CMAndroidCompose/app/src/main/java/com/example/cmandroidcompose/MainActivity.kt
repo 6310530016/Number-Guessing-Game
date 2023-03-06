@@ -14,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -58,6 +59,11 @@ fun GameArea() {
     Column(verticalArrangement = Arrangement.spacedBy(18.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text = "Number Guessing Game",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.SemiBold,
+            textAlign = TextAlign.Center
+        )
         Text(text = "Try to guess the number I'm thinking of from 1 - 50!",
             fontSize = 24.sp,
             fontWeight = FontWeight.SemiBold,
@@ -83,7 +89,7 @@ fun ActionArea(answer: Int) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         NumberInputField(number_input, {number_input = it})
-        Spacer(modifier = Modifier.height( 24.dp))
+        Spacer(modifier = Modifier.height( 12.dp))
         if (number == 0 && !is_correct) {
             result_text = ""
         }
@@ -106,10 +112,12 @@ fun ActionArea(answer: Int) {
         }
         Button(onClick = {number = number_input.toIntOrNull() ?: 0
                 count++}) {
-            Text(text = stringResource(id = R.string.button_label1))
+            Text(text = stringResource(id = R.string.button_label1), fontSize = 20.sp)
         }
-        Text(text = result_text)
-        Text(text = amount_text)
+        Spacer(modifier = Modifier.height( 12.dp))
+        Text(text = result_text, fontSize = 20.sp, textAlign = TextAlign.Center)
+        Spacer(modifier = Modifier.height( 12.dp))
+        Text(text = amount_text, fontSize = 20.sp, textAlign = TextAlign.Center)
         Button(onClick = { answer = (1..50).random()
                          count = 0
                          is_correct = false
@@ -128,10 +136,9 @@ fun ActionArea(answer: Int) {
 fun NumberInputField(value: String,
         onValueChange: (String) -> Unit){
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        TextField(value = value,
+        OutlinedTextField(value = value,
             onValueChange = onValueChange,
             label = { Text(stringResource(R.string.text_input_label1))},
-            modifier = Modifier.fillMaxWidth(),
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
