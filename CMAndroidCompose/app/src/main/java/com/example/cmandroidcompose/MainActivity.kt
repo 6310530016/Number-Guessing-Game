@@ -58,7 +58,7 @@ fun GameArea() {
     Column(verticalArrangement = Arrangement.spacedBy(18.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Try to guess the number I'm thinking of from 1 - 10!",
+        Text(text = "Try to guess the number I'm thinking of from 1 - 50!",
             fontSize = 24.sp,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center
@@ -71,7 +71,7 @@ fun GameArea() {
 fun ActionArea(answer: Int) {
     var answer: Int by remember { mutableStateOf(answer) }
     var number_input: String by remember { mutableStateOf("") }
-    var number: Int = number_input.toIntOrNull() ?: 0
+    var number: Int by remember { mutableStateOf(0) }
     var is_correct: Boolean by remember { mutableStateOf(false) }
 
     var result: Double = 0.0
@@ -104,21 +104,22 @@ fun ActionArea(answer: Int) {
                 //count.state += 1
             }
         }
+        Button(onClick = {number = number_input.toIntOrNull() ?: 0
+                count++}) {
+            Text(text = stringResource(id = R.string.button_label1))
+        }
         Text(text = result_text)
         Text(text = amount_text)
         Button(onClick = { answer = (1..50).random()
                          count = 0
                          is_correct = false
                         amount_text = ""
+                        number = 0
                          },
             contentPadding = PaddingValues(18.dp)
         ) {
             Text(stringResource(id = R.string.try_again_button), fontSize = 20.sp)
         }
-        println(number)
-        println(answer)
-        println(count)
-        println(is_correct)
     }
 
 }
@@ -151,7 +152,7 @@ fun ResultText(result: Double): String {
     }
 
     val result = abs(result)
-    if (result < 0.15) {
+    if (result < 0.266666666) {
         text += " " + stringResource(id = R.string.close)
     }
     else if(result > 0.63333333) {
