@@ -14,3 +14,6 @@ Number-Guessing-Game
 	- ResultText(result) เลือกข้อความที่จะแสดงจาก result
 	- GuessAmountText(count) เลิอกข้อความที่จะแสดงจาก count ค่า count จะเพิ่มขึ้น 1 ครั้งต่อการกดปุ่ม Guess
 
+คลิปวีดิโอ
+
+https://youtu.be/WnIAzslSKD0
